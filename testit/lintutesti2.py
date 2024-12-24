@@ -2,7 +2,7 @@ lintulista = ["metso", "pyy", "teeri", "riekko", "kiiruna"]
 mainitut_linnut = []
 
 while True:
-    lintu = input("Kerro jokin metsäkanalintu (lopeta lopettaaksesi): ")
+    lintu = input("Kerro jokin metsäkanalintu (kirjoita lopeta lopettaaksesi): ")
     
     if lintu.lower() == "lopeta":
         break
