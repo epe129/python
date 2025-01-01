@@ -22,18 +22,18 @@ def peli():
                 print("--------------------")
                 betti = int(input(f"Aseta bettisi saldon mukaan: "))
             print("--------------------")
-            symbols = [0,10, 5, 0, 8, 0, 6, 0, 4, 0, 12, 0, 2, 0, 15, 0, 20, 0, 1,]
+            numerot = [0,10, 5, 0, 8, 0, 6, 0, 4, 0, 12, 0, 2, 0, 15, 0, 20, 0, 1,]
             for _ in range(1):
                 
-                sr = random.choice(symbols)
+                sr = random.choice(numerot)
                 
                 sb = sr * betti
                 
-                sr2 = random.choice(symbols)
+                sr2 = random.choice(numerot)
                 
                 sb2 = sr2 * betti
                 
-                sr3 = random.choice(symbols)
+                sr3 = random.choice(numerot)
                 
                 sb3 = sr3 * betti
                 
