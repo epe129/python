@@ -14,28 +14,38 @@ def peli():
     try:
         while p:
             print("--------------------")
-            betti = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
-            b = kokonaissaldo - betti
-            if betti > kokonaissaldo:
+            betti1 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+            betti2 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+            betti3 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+            kokonausbetti = betti1 + betti2 + betti3
+            b = kokonaissaldo - kokonausbetti
+            if kokonausbetti > kokonaissaldo:
                 print("--------------------")
                 print(f"saldosi on {kokonaissaldo}€")
                 print("--------------------")
-                betti = int(input(f"Aseta bettisi saldon mukaan: "))
+                betti1 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+                betti2 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+                betti3 = int(input(f"Aseta bettisi {kokonaissaldo}€: "))
+                kokonausbetti = betti1 + betti2 + betti3
+                b = kokonaissaldo - kokonausbetti
+                
+
+            
             print("--------------------")
             numerot = [0,10, 5, 0, 8, 0, 6, 0, 4, 0, 12, 0, 2, 0, 15, 0, 20, 0, 1,]
-            for _ in range(1):
+            
                 
-                sr = random.choice(numerot)
+            sr = random.choice(numerot)
                 
-                sb = sr * betti
+            sb = sr * betti1
                 
-                sr2 = random.choice(numerot)
+            sr2 = random.choice(numerot)
                 
-                sb2 = sr2 * betti
+            sb2 = sr2 * betti2
                 
-                sr3 = random.choice(numerot)
+            sr3 = random.choice(numerot)
                 
-                sb3 = sr3 * betti
+            sb3 = sr3 * betti3
                 
             print(f"Voitit {sb}, {sb2}, {sb3}€")
             print("-----------------------")
@@ -52,6 +62,6 @@ def peli():
                 break
     except ValueError:
         print("Käy vain numerot väliltä 1-100 ei muita merkkejä!")
-        betti = input("paina enter mennäksesi takaisin alkuun: ")
+        input("paina enter mennäksesi takaisin alkuun: ")
         peli()
 peli()
