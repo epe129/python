@@ -5,7 +5,8 @@ pygame.init()
 
 # luodaan väri
 color = (255,255,255)
-
+# asetetaan rect väri
+rect_color = (255, 0, 0)
 # kuvan paikka
 paikka = (0,0)
 
@@ -31,6 +32,9 @@ while not sulje:
         # jos painat x ylhäältä peli suljetaan
         if event.type == pygame.QUIT:
             sulje = True
+    # piirretään rect
+    pygame.draw.rect(näyttö, rect_color, pygame.Rect(20, 20, 40, 40))
+
     # päivittää ruudun    
     pygame.display.update()
 
