@@ -27,9 +27,6 @@ c = (255,255,255)
 
 # k = pygame.Surface.copy(n)
 
-
-
-
 Käynnissä = True
 # Pelin silmukka niin kaun käynnissä kun peli suljetaan
 while Käynnissä:
@@ -60,7 +57,7 @@ while Käynnissä:
     # if color == "red":
     #     color = "green"
     # else:
-    #     color = "red"
+    #     color = "red" 
 
 
 # print(x, y)

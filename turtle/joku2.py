@@ -1,10 +1,18 @@
 import turtle
 
-tt = turtle.Turtle()
-t = turtle.Screen()
+t = turtle.Turtle()
+tt = turtle.Screen()
+tt.bgcolor("black")
 
-for i in range(1):
-    tt.circle(150)
+colors = ["red", "purple", "blue", "green", "orange", "yellow"]
+ttt = turtle.Pen()
+
+for i in range(160):
+    ttt.pencolor(colors[i%6])
+    ttt.width(i//100 + 1)
+    ttt.forward(i)
+    ttt.left(59)
+
 
 turtle.done()
 
