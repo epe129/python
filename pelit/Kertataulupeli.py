@@ -1,5 +1,7 @@
+# voit harjoitellaa haluamaasi kertataulua
+
 import random
-import fontstyle
+import fontstyle # käyetään että saadaa hieno fontti alkutekstiin
 
 def kertatauluPeli():
     try:
