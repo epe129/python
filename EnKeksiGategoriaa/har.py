@@ -45,37 +45,59 @@
 #     # nelio("python", 15)
 
 
-def nelio(sana,luku):
-    laskuri = 0
-    a = sana
-    c = True
-    while c:
-        for i in sana:
-            a += i
-            ekakirjain = i
-            if luku > 4:
-                if len(a) >= luku:
-                    print(a[:luku])
-                    laskuri += 1
-                    if ekakirjain == a[0]:
-                        laskuri += 1
-                        print(a[1:luku])
-                    a = a[2:luku]
-                if laskuri == luku:
-                    c = False
-                    break
-            else:
-                if len(a) >= luku:
-                    print(a[:luku])
-                    laskuri += 1
-                    if ekakirjain == a[0]:
-                        laskuri += 1
-                        print(a[1:luku] + a[1])
-                    if laskuri == luku:
-                        c = False
-                        break
+# def nelio(sana,luku):
+#     laskuri = 0
+#     a = sana
+#     c = True
+#     while c:
+#         for i in sana:
+#             a += i
+#             ekakirjain = i
+#             if luku > 4:
+#                 if len(a) >= luku:
+#                     print(a[:luku])
+#                     laskuri += 1
+#                     if ekakirjain == a[0]:
+#                         laskuri += 1
+#                         print(a[1:luku])
+#                     a = a[2:luku]
+#                 if laskuri == luku:
+#                     c = False
+#                     break
+#             else:
+#                 if len(a) >= luku:
+#                     print(a[:luku])
+#                     laskuri += 1
+#                     if ekakirjain == a[0]:
+#                         laskuri += 1
+#                         print(a[1:luku] + a[1])
+#                     if laskuri == luku:
+#                         c = False
+#                         break
 
-if __name__ == "__main__":
-    nelio("aba", 3)
-    # nelio("abc", 5)
-    # nelio("python", 15)
+# if __name__ == "__main__":
+#     nelio("aba", 3)
+#     # nelio("abc", 5)
+#     # nelio("python", 15)
+
+
+# def nelio(sana, luku):
+#     pituus = len(sana)
+#     kopio = sana
+#     for i in range(luku):
+#         if pituus < luku:
+#             kopio = kopio * luku
+#         print(kopio[0:luku])
+#         kopio = (kopio[luku:] + kopio)[:pituus] 
+
+# if __name__ == "__main__":
+#     # nelio("aba", 3)
+#     # nelio("abc", 5)
+#     # nelio("python", 15)
+#     # nelio("aybabtu", 5)
+
+def tee_jotain(a: int):
+   b = 2 * a           
+   return b            
+   
+x = tee_jotain(23)  
