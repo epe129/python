@@ -7,22 +7,45 @@
 # print(onko)
 
 import pygame
+from pygame.locals import *
 
-import sys
+# import sys
 
 # tuomme pygame-moduulin
 pygame.init()
 # asetamme nöytön koon # pygame.RESIZABLE antaa koon muuntamisen luvan
-n = pygame.display.set_mode((500, 500), pygame.RESIZABLE)
+# n = pygame.display.set_mode((500, 500), pygame.RESIZABLE)
 
 # määrittää väri
-color = "red"
+# color = (0,0,255)
+
+white = (255,255,255)
+green = (0,255,0)
+blue = (0,0,128)
+black = (0,0,0)
+red = (255,0,0)
+
+# assingning values to x and y variable
+X = 400
+Y = 400
+
+# create the display surface object
+# of specific dimension (X,Y)
+d = pygame.display.set_mode((X,Y))
 
 # asettaa otsikon 
 pygame.display.set_caption("asd")
-a = pygame.image.load("a.png")
-# ikkuna kuvakkeen muuntaminen
-pygame.display.set_icon(a) 
+# a = pygame.image.load("a.png")
+# # ikkuna kuvakkeen muuntaminen
+# pygame.display.set_icon(a) 
+
+# creating list in which we will store
+# the position of the circle 
+# circle_positions = []
+d.fill(white)
+
+# # radius of the circle
+# circle_radius = 60
 
 # c = (255,255,255)
 # antaa näytön normaalin koon
@@ -36,7 +59,7 @@ pygame.display.set_icon(a)
 # pygame.Surface.set_colorkey(a, [255,255,255])
 
 # asettaa kuinka hyvin kuva näkyy 0 läpinäkyvä 
-pygame.Surface.set_alpha(a, 1)
+# pygame.Surface.set_alpha(a, 1)
 
 # tulostaa väriavaimen arvon surfacesta
 # print(pygame.Surface.get_colorkey(a))
@@ -44,23 +67,46 @@ pygame.Surface.set_alpha(a, 1)
 
 # pygame.time.wait(5000)
 
-def drawingfucntion(x,y,width,height):
+# def drawingfucntion(x,y,width,height):
 
-    # creating rectangle using the draw.rect() method
-    pygame.draw.rect(n, (0,0,255), [x , y, width, height])
+#     # creating rectangle using the draw.rect() method
+#     pygame.draw.rect(n, (0,0,255), [x , y, width, height])
 
-    # calculation the center of the circle
-    circle_x = width/2 + x
-    circle_y = height/2 + y
+#     # calculation the center of the circle
+#     circle_x = width/2 + x
+#     circle_y = height/2 + y
 
-    # calculating the radius of the circle
-    if height < width:
-        radius = height/2
-    else:
-        radius = width/2
+#     # calculating the radius of the circle
+#     if height < width:
+#         radius = height/2
+#     else:
+#         radius = width/2
 
-    # drawing the circle
-    pygame.draw.circle(n, (0,255,0), [circle_x, circle_y], radius)
+#     # drawing the circle
+#     pygame.draw.circle(n, (0,255,0), [circle_x, circle_y], radius)
+
+# draw a polygon using draw.polygon()
+# method of pygame
+# pygame.draw.polygon(surfare, color, pointlist, thickness)
+# thickness of line parameter is optinal
+pygame.draw.polygon(d, blue, [(146,0),(291,106),(236,277),(0,106)])
+
+# draw a line using draw.line()
+# method of pygame.
+# pygame,draw.line(surface,color, start point, end point, thickness)
+pygame.draw.line(d, green, (60,300), (120, 300), 4)
+
+# draw a circle using draw.circle()
+# method of pygame
+# pygame.draw.circle(surface, color, center point, raidus, thickness)
+pygame.draw.circle(d, green, (300, 50), 20, 1)
+
+# draw a ellipse using draw.ellipse()
+# method of pygame
+# pygame.draw.ellipse(surface, color, bounding rectangle, thickness)
+pygame.draw.ellipse(d, black, (150,300,100,50))
+
+# draw a rectangle using draw.rect()
 
 
 Käynnissä = True
@@ -72,9 +118,26 @@ while Käynnissä:
         # jos painaa x niin lopettaa
         if event.type == pygame.QUIT:
             Käynnissä = False
-    n.fill((255,255,255))
 
-    drawingfucntion(50,200,500,200)
+        # if the type of the evnt is MOUSEBUTTONDOWN
+        # then storing the current position
+        # elif event.type == MOUSEBUTTONDOWN:
+        #     position = event.pos
+        #     circle_positions.append(position)
+
+        # # using for loop to itarete
+        # over the circle_postions
+        # list
+    # for position in circle_positions:
+    #     #drawing the circle
+    #     pygame.draw.circle(n, color, position, circle_radius)
+  
+    # n.fill((255,255,255))
+
+    
+    pygame.display.update()
+
+    # drawingfucntion(50,200,500,200)
 
     # piirtää ympyrän näytölle
     # pygame.draw.circle(n, (0,0,0), (300, 200), 75)
@@ -132,8 +195,6 @@ while Käynnissä:
     #     color_var += 1
 
     
-    pygame.display.update()
-
     # vaihtaa väriä sen mukaan mikä se on
     # if color == "red":
     #     color = "green"

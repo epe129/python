@@ -96,8 +96,46 @@
 #     # nelio("python", 15)
 #     # nelio("aybabtu", 5)
 
-def tee_jotain(a: int):
-   b = 2 * a           
-   return b            
+# def tee_jotain(a: int):
+#    b = 2 * a           
+#    return b            
    
-x = tee_jotain(23)  
+# x = tee_jotain(23)  
+
+# def palindromi(sana):
+#     a = sana[::-1]
+#     if sana == a:
+#         print(f"{sana} on palindromi!")
+#     else:
+#         print("ei ollut palindromi")
+
+# while True:
+#     kysy = input("Anna sana: ")
+#     palindromi(kysy)
+#     a = kysy[::-1]
+#     if kysy == a:
+#         break
+    
+# def summa(lista1, lista2):
+#     new_list = []
+#     luku = 0
+#     for i in lista1:
+#         print(i)
+
+#     for x in lista2:
+#         print(x)
+        
+#         if luku in new_list:
+#             luku = 0
+#         else:
+#             luku = x + i
+#             print(luku)    
+#             new_list.append(luku)
+#             luku = 0
+
+    
+#     print(new_list)
+# if __name__ == "__main__":
+#     lista1 = [1, 2, 3]
+#     lista2 = [7, 8, 9]
+#     summa(lista1, lista2)
