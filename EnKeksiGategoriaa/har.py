@@ -139,3 +139,16 @@
 #     lista1 = [1, 2, 3]
 #     lista2 = [7, 8, 9]
 #     summa(lista1, lista2)
+# n = 7
+# luku = 2
+# i = 1
+# while i <= n:
+#     if i % 2 == 0:
+#         print(i - 1)
+#     elif i % 1 == 0:
+#         if i == luku:
+#             print(i)
+#         else:
+#             print(i + 1)
+#     i += 1
+    
