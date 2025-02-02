@@ -151,4 +151,23 @@
 #         else:
 #             print(i + 1)
 #     i += 1
-    
+
+def ilman_vokaaleja(lause):
+    vokaalit = ["a","e","i","o","u","y","ä","ö"]
+    sanat = lause.split()
+    ilman = ""
+    for x in sanat:
+       pass
+    # print(x)
+    for _ in range(len(sanat)):
+        for i in vokaalit:
+            if i in x:
+                m = x.replace(i, "")
+                ilman = ilman + m
+                ilman += " "
+
+    print(ilman)
+
+if __name__=="__main__":
+    mjono = "testisana"
+    ilman_vokaaleja(mjono)

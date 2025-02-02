@@ -89,26 +89,30 @@ d.fill(white)
 # method of pygame
 # pygame.draw.polygon(surfare, color, pointlist, thickness)
 # thickness of line parameter is optinal
-pygame.draw.polygon(d, blue, [(146,0),(291,106),(236,277),(0,106)])
+# pygame.draw.polygon(d, blue, [(146,0),(291,106),(236,277),(0,106)])
 
-# draw a line using draw.line()
-# method of pygame.
-# pygame,draw.line(surface,color, start point, end point, thickness)
-pygame.draw.line(d, green, (60,300), (120, 300), 4)
+# # draw a line using draw.line()
+# # method of pygame.
+# # pygame,draw.line(surface,color, start point, end point, thickness)
+# pygame.draw.line(d, green, (60,300), (120, 300), 4)
 
-# draw a circle using draw.circle()
-# method of pygame
-# pygame.draw.circle(surface, color, center point, raidus, thickness)
-pygame.draw.circle(d, green, (300, 50), 20, 1)
+# # draw a circle using draw.circle()
+# # method of pygame
+# # pygame.draw.circle(surface, color, center point, raidus, thickness)
+# pygame.draw.circle(d, green, (300, 50), 20, 1)
 
-# draw a ellipse using draw.ellipse()
-# method of pygame
-# pygame.draw.ellipse(surface, color, bounding rectangle, thickness)
-pygame.draw.ellipse(d, black, (150,300,100,50))
+# # draw a ellipse using draw.ellipse()
+# # method of pygame
+# # pygame.draw.ellipse(surface, color, bounding rectangle, thickness)
+# pygame.draw.ellipse(d, black, (150,300,100,50))
 
-# draw a rectangle using draw.rect()
+# # draw a rectangle using draw.rect()
+# # method of pygame
+# # pygame.draw.rect(surface, color, rectangle, tuple, thickness)
+# # thickness of line parameter is optimal
+# pygame.draw.rect(d, black, (150, 300, 100, 50))
 
-
+pygame.draw.rect(d,black, pygame.Rect(30,30,60,60), 2, border_bottom_right_radius=5)
 Käynnissä = True
 # Pelin silmukka niin kaun käynnissä kun peli suljetaan
 while Käynnissä:
