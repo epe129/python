@@ -159,12 +159,11 @@ def ilman_vokaaleja(lause):
     for x in sanat:
        pass
     # print(x)
-    for _ in range(len(sanat)):
-        for i in vokaalit:
-            if i in x:
-                m = x.replace(i, "")
-                ilman = ilman + m
-                ilman += " "
+    for i in vokaalit:
+        if i in x:
+            m = x.replace(i, "")
+            ilman = ilman + m
+            ilman += " "
 
     print(ilman)
 
