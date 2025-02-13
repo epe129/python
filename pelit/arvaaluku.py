@@ -1,3 +1,4 @@
+# tee talukko jossa on kierros ja arvauksien määrä
 import random
 
 def Arvaaluku():
