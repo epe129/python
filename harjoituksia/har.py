@@ -85,9 +85,6 @@ def hyväksymisprosentti(luvut, har_pisteet):
         pist = 0
         har = 0
                 
-
-    
-
     print(maksimi_pistemäärä)
 
     for q in maksimi_pistemäärä:
