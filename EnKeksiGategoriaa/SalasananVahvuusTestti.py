@@ -42,12 +42,11 @@ def SalasanaVahvuusTesti(password):
         print("Salasanassasi ei ole isojakirjaimia")
         print("-------------------------")
 
-    for a in YleisimmätSalasanat:
-        pass          
-    
-    if a == password:
-        print("Vaihda salasanasi heti ")
-    else:
+    for a in YleisimmätSalasanat:          
+        if a == password:
+            print("Vaihda salasanasi heti ")
+            break
+    if not a == password:
         print(f"5/{VahvuusLaskuri}")
         
 
@@ -64,9 +63,9 @@ print("""Salasanasi tulisi sisältää:
 
 print("-------------------------")
     
-ass = input("Anna salasanasi jonka vahvuuden haluat tietää: ")    
+salasana = input("Anna salasanasi jonka vahvuuden haluat tietää: ")    
 
 
 print("-------------------------")
 
-SalasanaVahvuusTesti(ass)
+SalasanaVahvuusTesti(salasana)

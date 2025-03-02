@@ -56,47 +56,29 @@ def keskiarvo(luvut, har_pisteet):
 
 
 def hyväksymisprosentti(luvut, har_pisteet):
-    laskuri = luvut[2]
     pisteet = luvut[0]
-    harjoitukset = luvut[3]
-    for i in harjoitukset:
-        pass
+    harjoitukset = luvut[1]
+    laskuri = luvut[2]
+    harjoitukset_luvut = luvut[3]
     kaikki_pisteet = luvut[4]
-    maksimi_pistemäärä = []
-    pist = 0
-    har = 0
-    maksimi_pistemäärä_luku = 0
+   
     kaikki_har_pisteet = 0
-    kaikki = 0
-    n = 0
-    j = 0
-    # tässä ongelma
-    while n < laskuri:
-        n += 1    
-        for x in har_pisteet:
-            pist += x
-            kaikki_har_pisteet += x
-        for i in kaikki_pisteet:
-            pist += i
-        for c in harjoitukset:
-            har += c
-            j = har/pist        
-        maksimi_pistemäärä.append(j)
-        pist = 0
-        har = 0
-                
-    print(maksimi_pistemäärä)
+    harjoitus = 0
 
-    for q in maksimi_pistemäärä:
-        maksimi_pistemäärä_luku += q
+    for x in har_pisteet:
+        kaikki_har_pisteet += x
     
-    print(maksimi_pistemäärä_luku*100)
-
-    # kaikki = pisteet + kaikki_har_pisteet
-
-    # hyväksymis_prosentti = maksimi_pistemäärä_luku / kaikki 
+    for c in harjoitukset_luvut:
+        harjoitus += c /100
+       
+    kaikki = pisteet + kaikki_har_pisteet
     
-    # print(f"Hyväksymisprosentti: {hyväksymis_prosentti*100}")
+    hyväksymis_prosentti =  harjoitus
+
+    if pisteet <= 10:
+        hyväksymis_prosentti = 0.0
+
+    print(f"Hyväksymisprosentti: {hyväksymis_prosentti*100}")
 
 def arvosanajakauma(luvut, har_pisteet):
     kaikki_pisteet_har = luvut[4]
@@ -122,19 +104,19 @@ def arvosanajakauma(luvut, har_pisteet):
     nolla = "0:"
     
     for z in keskiarvot:
-        print(z)
-        if z <= 14:
-            nolla += "*"
-        if z >= 15 and z <= 17:
-            yksi += "*" 
-        if z >= 16 and z <= 20:
-            kaksi += "*"
-        if z >= 21 and z <= 23:
-            kolme += "*"
-        if z >= 24 and z <= 27:
-            neljä += "*"
-        if z >= 28:
-            viisi += "*"        
+        # print(z)
+        if z < 15:
+            nolla += " *"
+        if z > 14 and z < 18:
+            yksi += " *" 
+        if z > 17 and z < 21:
+            kaksi += " *"
+        if z > 20 and z < 24:
+            kolme += " *"
+        if z > 23 and z < 28:
+            neljä += " *"
+        if z > 27 and z < 31:
+            viisi += " *"        
     print(viisi)
     print(neljä)
     print(kolme)
