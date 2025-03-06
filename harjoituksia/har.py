@@ -62,9 +62,7 @@ def hyväksymisprosentti(luvut, har_pisteet):
     hyväksytyt = 0
 
     for i in kaikki_pisteet:
-        if i <= 9:
-            continue
-        else:
+        if i >= 10:
             hyväksytyt += 1
     
     hyväksymis_prosentti = (hyväksytyt/laskuri) * 100
@@ -101,6 +99,7 @@ def arvosanajakauma(luvut, har_pisteet):
         keskiarvot.append(jako)
         pisteiden_keskiarvo = 0
     for q in keskiarvot:
+        # print(q)
         if q <= 14:
             nolla += " *"
         elif q >= 15 and q <= 17:
