@@ -24,8 +24,9 @@ def luvut():
     luvut.append(laskuri)
     luvut.append(harjoitukset_luvut) 
     luvut.append(pisteet_luvut)
+
     print("Tilasto:")
-    # print(luvut)
+
     return luvut
 
 def harjoituspisteet(luvut):
@@ -35,8 +36,6 @@ def harjoituspisteet(luvut):
         luku = int(i)
         piste = luku // 10
         harjoitus_pisteet.append(piste)
-
-    # print(harjoitus_pisteet)
     
     return harjoitus_pisteet
      
@@ -52,48 +51,35 @@ def keskiarvo(luvut, har_pisteet):
         kaikki_pisteet_har += i
     
     pisteiden_keskiarvo = kaikki_pisteet_har +  pisteet 
+    
     print(f"Pisteiden keskiarvo: {pisteiden_keskiarvo / laskuri }")
 
 
 def hyväksymisprosentti(luvut, har_pisteet):
-    pisteet = luvut[0]
-    harjoitukset = luvut[1]
     laskuri = luvut[2]
-    harjoitukset_luvut = luvut[3]
     kaikki_pisteet = luvut[4]
-   
-    kaikki_har_pisteet = 0
-    harjoitus = 0
-
-    for x in har_pisteet:
-        kaikki_har_pisteet += x
     
-    for c in harjoitukset_luvut:
-        harjoitus += c /100
-       
-    kaikki = pisteet + kaikki_har_pisteet
+    hyväksytyt = 0
+
+    for i in kaikki_pisteet:
+        if i <= 9:
+            continue
+        else:
+            hyväksytyt += 1
     
-    hyväksymis_prosentti =  harjoitus
+    hyväksymis_prosentti = (hyväksytyt/laskuri) * 100
+    
+    print(f"Hyväksymisprosentti: {round(hyväksymis_prosentti, 1)}")
 
-    if pisteet <= 10:
-        hyväksymis_prosentti = 0.0
-
-    print(f"Hyväksymisprosentti: {hyväksymis_prosentti*100}")
 
 def arvosanajakauma(luvut, har_pisteet):
-    kaikki_pisteet_har = luvut[4]
-    pisteet = luvut[0]
+    kaikki_pisteet = luvut[4]
     laskuri = luvut[2]
+    
     pisteiden_keskiarvo = 0
-    # kaikki_pisteet_har = 0
+    jako = 0
     keskiarvot = []
-    for x in kaikki_pisteet_har:
-        for i in har_pisteet:
-            pisteiden_keskiarvo += x
-            pisteiden_keskiarvo += i
-        jako = pisteiden_keskiarvo / laskuri 
-        keskiarvot. append(jako)
-        pisteiden_keskiarvo = 0
+   
     
     print("Arvosanajakauma:")                 
     viisi = "5:"
@@ -103,33 +89,40 @@ def arvosanajakauma(luvut, har_pisteet):
     yksi =  "1:"
     nolla = "0:"
     
-    for z in keskiarvot:
-        # print(z)
-        if z < 15:
+    for x in kaikki_pisteet:
+        for i in har_pisteet:
+            if x <= 9:
+                pisteiden_keskiarvo += 0         
+                pisteiden_keskiarvo += i
+            else:
+                pisteiden_keskiarvo += x         
+                pisteiden_keskiarvo += i
+        jako = pisteiden_keskiarvo / laskuri
+        keskiarvot.append(jako)
+        pisteiden_keskiarvo = 0
+    for q in keskiarvot:
+        if q <= 14:
             nolla += " *"
-        if z > 14 and z < 18:
-            yksi += " *" 
-        if z > 17 and z < 21:
+        elif q >= 15 and q <= 17:
+            yksi += " *"
+        elif q >= 18 and q <= 20:
             kaksi += " *"
-        if z > 20 and z < 24:
+        elif q >= 21 and q <= 23:
             kolme += " *"
-        if z > 23 and z < 28:
-            neljä += " *"
-        if z > 27 and z < 31:
-            viisi += " *"        
+        elif q >= 24 and q <= 27:
+            neljä += " *"           
+        elif q >= 28:
+            viisi += " *"
     print(viisi)
     print(neljä)
     print(kolme)
     print(kaksi)
     print(yksi)
     print(nolla)
-    
-        
 
-def main():
-    syötteet = luvut()
-    har_pisteet = harjoituspisteet(syötteet)
-    keskiarvo(syötteet, har_pisteet)
-    hyväksymisprosentti(syötteet, har_pisteet)
-    arvosanajakauma(syötteet, har_pisteet)
-main()
+syötteet = luvut()
+har_pisteet = harjoituspisteet(syötteet)
+keskiarvo(syötteet, har_pisteet)
+hyväksymisprosentti(syötteet, har_pisteet)
+arvosanajakauma(syötteet, har_pisteet)
+
