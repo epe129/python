@@ -60,12 +60,20 @@ def hyväksymisprosentti(luvut, har_pisteet):
     kaikki_pisteet = luvut[4]
     
     hyväksytyt = 0
-
+    hylätty = 0
+    
+        
     for i in kaikki_pisteet:
         if i >= 10:
-            hyväksytyt += 1
+            hyväksytyt += 1 
+        else:
+            hylätty += 1
+
+
+    # print(hylätty, hyväksytyt)
+        
     
-    hyväksymis_prosentti = (hyväksytyt/laskuri) * 100
+    hyväksymis_prosentti = ((hyväksytyt/laskuri) * 100) 
     
     print(f"Hyväksymisprosentti: {round(hyväksymis_prosentti, 1)}")
 
@@ -76,42 +84,50 @@ def arvosanajakauma(luvut, har_pisteet):
     
     pisteiden_keskiarvo = 0
     jako = 0
-    keskiarvot = []
-   
-    
+    k = []
+    h = []
+    arvot = []
+
     print("Arvosanajakauma:")                 
-    viisi = "5:"
-    neljä = "4:"
-    kolme = "3:"
-    kaksi = "2:"
-    yksi =  "1:"
-    nolla = "0:"
+    viisi = "5: "
+    neljä = "4: "
+    kolme = "3: "
+    kaksi = "2: "
+    yksi =  "1: "
+    nolla = "0: "
+
+    for i in har_pisteet:
+        h.append(i)
     
     for x in kaikki_pisteet:
-        for i in har_pisteet:
-            if x <= 9:
-                pisteiden_keskiarvo += 0         
-                pisteiden_keskiarvo += i
-            else:
-                pisteiden_keskiarvo += x         
-                pisteiden_keskiarvo += i
-        jako = pisteiden_keskiarvo / laskuri
-        keskiarvot.append(jako)
+        if x <= 9:
+            pisteiden_keskiarvo += 0         
+        else:
+            pisteiden_keskiarvo += x         
+        jako = pisteiden_keskiarvo 
+        k.append(jako)
         pisteiden_keskiarvo = 0
-    for q in keskiarvot:
+    
+    for p in range(len(h)):
+        for z in range(len(k)):
+            if z == p:
+                arvo = h[p] + k[z]
+                arvot.append(arvo)
+
+    for q in arvot:
         # print(q)
         if q <= 14:
-            nolla += " *"
+            nolla += "*"
         elif q >= 15 and q <= 17:
-            yksi += " *"
+            yksi += "*"
         elif q >= 18 and q <= 20:
-            kaksi += " *"
+            kaksi += "*"
         elif q >= 21 and q <= 23:
-            kolme += " *"
+            kolme += "*"
         elif q >= 24 and q <= 27:
-            neljä += " *"           
+            neljä += "*"           
         elif q >= 28:
-            viisi += " *"
+            viisi += "*"
     print(viisi)
     print(neljä)
     print(kolme)
@@ -124,4 +140,5 @@ har_pisteet = harjoituspisteet(syötteet)
 keskiarvo(syötteet, har_pisteet)
 hyväksymisprosentti(syötteet, har_pisteet)
 arvosanajakauma(syötteet, har_pisteet)
+
 
