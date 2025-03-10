@@ -61,19 +61,35 @@ def hyväksymisprosentti(luvut, har_pisteet):
     
     hyväksytyt = 0
     hylätty = 0
-    
-        
+    har = []
+    k_pisteet = []
+    arvot = []
+
     for i in kaikki_pisteet:
-        if i >= 10:
-            hyväksytyt += 1 
-        else:
-            hylätty += 1
-
-
-    # print(hylätty, hyväksytyt)
-        
+        k_pisteet.append(i)
+    for z in har_pisteet:
+        har.append(z)
     
-    hyväksymis_prosentti = ((hyväksytyt/laskuri) * 100) 
+    for p in range(len(har)):
+        for z in range(len(k_pisteet)):
+            if k_pisteet[z] <= 9:
+                continue
+            elif z == p:
+                arvo = har[p] + k_pisteet[z]
+                arvot.append(arvo)
+    
+    arvot.sort()
+    summa = 0
+    for o in arvot:
+        summa += o
+        # print(o)
+        if o >= 10:
+            hyväksytyt += 1 
+            
+
+    # print(hylätty, hyväksytyt, summa)
+         
+    hyväksymis_prosentti = (hyväksytyt/laskuri)*100 
     
     print(f"Hyväksymisprosentti: {round(hyväksymis_prosentti, 1)}")
 
