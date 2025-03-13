@@ -1,17 +1,13 @@
-def transponoi(matriisi: list):
-    uusilista = []
-    laskuri = 0
-    a = []
-    for i in range(len(matriisi)):
-        for c in range(len(matriisi[i])):
-            print(f"{matriisi[c][i]} ", end="")
-            if i == 0:
-                a.append(matriisi[c][i])
-                uusilista.append(a)        
-        print(" ")
-    matriisi[:] = uusilista
+# tee ratkaisu tänne
+def histogrammi(sana: str):
+    kirjaimet = {}
+    for kirjain in sana:
+        if kirjain not in kirjaimet:
+            kirjaimet[kirjain] = 0
+        kirjaimet[kirjain] += 1
+    
+    for avain, arvo in kirjaimet.items():
+        print(avain, "*"*arvo)
 
 if __name__=="__main__":
-    matriisi = [[1,2,3],[4,5,6],[7,8,9]]
-    transponoi(matriisi)
-    print(matriisi)
+    histogrammi("saippuakauppias")
