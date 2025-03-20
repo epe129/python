@@ -169,34 +169,178 @@
     #                 break
 
 
-suoritukset = [('ohpe', 4),('ohpe', 5),('tira', 3),('lama', 0),('tira', 2),('jtkt', 1)]
-nähäty = {}
-for i in suoritukset:
-    aine, numero = i
-    if aine not in nähäty and numero > 0:
-        nähäty[aine] = numero
-    if aine in nähäty:
-        edlli=numero
-        e = aine
-        for avain,numero in nähäty.items():
-            if numero > edlli and avain == e:
-                nähäty[aine] = numero
-            if numero < edlli and avain == e:
-                nähäty[aine] = edlli                
-    else:
-        pass
+# suoritukset = [('ohpe', 4),('ohpe', 5),('tira', 3),('lama', 0),('tira', 2),('jtkt', 1)]
+# nähäty = {}
+# for i in suoritukset:
+#     aine, numero = i
+#     if aine not in nähäty and numero > 0:
+#         nähäty[aine] = numero
+#     if aine in nähäty:
+#         edlli=numero
+#         e = aine
+#         for avain,numero in nähäty.items():
+#             if numero > edlli and avain == e:
+#                 nähäty[aine] = numero
+#             if numero < edlli and avain == e:
+#                 nähäty[aine] = edlli                
+#     else:
+#         pass
 
-print(nähäty)
+# print(nähäty)
+# if suoritus[1] == 0:
+#         return 0 
+
+# def lisaa_opiskelija(opiskelijat: dict, nimi: str):
+#     opiskelijat[nimi] = list()
+
+# def lisaa_suoritus(opiskelijat: dict, nimi: str, suoritus: tuple):          
+#     if suoritus[1] == 0:
+#         return 0 
+#     opiskelijat[nimi].append(suoritus)
+    
+    
+        
+# def tulosta(opiskelijat: dict, nimi: str):
+#     if nimi not in opiskelijat:
+#         print(f"ei löytynyt ketään nimellä {nimi}") 
+#     for avain, arvot in opiskelijat.items():
+#         if avain == nimi:
+#             print(f"{avain}:")
+#             if arvot == "":
+#                 print(" ei suorituksia")
+#             else:
+#                 nähdytArvot = {}
+#                 keskiarvo = 0
+#                 lukuja = 0
+                
+#                 for avain2,arvot2 in arvot:
+#                     nähdytArvot[avain2] = arvot2
+#                 suoritukset = len(nähdytArvot)
+#                 for a,s in nähdytArvot.items():
+#                     keskiarvo += s
+#                     lukuja += 1
+
+#                 if suoritukset == 0:
+#                     print(" ei suorituksia")
+#                 else:
+#                     print(f" suorituksia {suoritukset} kurssilta:") 
+                
+#                 for a,s in nähdytArvot.items():
+#                     print(f"  {a} {s}")
+                
+#                 if keskiarvo == 0:
+#                     pass
+#                 else:
+#                     print(f" keskiarvo {keskiarvo/lukuja}")
+                
+   
+
+# def kooste(opiskelijat: dict):
+#     print(f"opiskelijoita {len(opiskelijat)}")
+#     edellinen = 0
+#     keskiarvot = {}
+#     summa = 0
+#     e = 0
+#     for avaint,arvot in opiskelijat.items():
+#         if len(arvot) > edellinen:
+#             edellinen = len(arvot)
+#         for nimi,numero in arvot:
+#             summa += numero
+#         keskiarvot[avaint] = summa
+#         summa = 0
+#     for w,i in keskiarvot.items():
+#         if i > e:
+#             e = i
+#     print(f"eniten suorituksia",len(arvot),avaint)
+#     print("paras keskiarvo",i/len(arvot) ,w)
+        
+
+# if __name__=="__main__":
+#     opiskelijat = {}
+#     lisaa_opiskelija(opiskelijat, "pekka")
+#     lisaa_suoritus(opiskelijat, "pekka", ("ohpe", 5))
+#     lisaa_suoritus(opiskelijat, "pekka", ("ohpe", 1))
+#     tulosta(opiskelijat, "pekka")
+#     # print(opiskelijat)
+
+# def add_student(students, name):
+#     students[name] = set()
+
+
+# def print_student(students, name):
+#     if name not in students:
+#         print(f"{name}: no such person in the database")
+#     else:
+#         print(f"{name}:")
+#         print(f"{len(students[name])}  completed courses:")
+#         for course in students[name]:
+#             print(f" {course[0]} {course[1]}")
+#         av_grade = 0
+#         for course in students[name]:
+#             course[1] += av_grade
+#             print(f"average grade {av_grade / len(students[name])}")
+
+          
+# def add_course(students,name,course: tuple):
+#     if course[1] == 0:
+#         return 0
+#     students[name].add(course)
+
+# def summary(students):
+#     print(f"students {len(students)}")
+#     most_courses = 0
+#     student_most_courses = None
+#     for student, courses in students.items():
+#         if len(courses) > most_courses:
+#             student_most_courses = student
+#             most_courses = len(courses)
+    
+#     print(f"most courses completed {most_courses} {student_most_courses}")
+         
+          
+
+
+
+# if __name__ == "__main__":
+#     students = {}
+#     add_student(students, "Peter")
+#     add_student(students, "Eliza")
+#     # print_student(students, "Peter")
+#     # print_student(students, "Eliza")
+#     # print_student(students, "Jack")
+#     add_course(students, "Peter", ("Data Structures and Algorithms", 1))
+#     add_course(students, "Peter", ("Introduction to Programming", 1))
+#     add_course(students, "Peter", ("Advanced Course in Programming", 1))
+#     add_course(students, "Eliza", ("Introduction to Programming", 5))
+#     add_course(students, "Eliza", ("Introduction to Computer Science", 4))
+#     summary(students)
+
 
 
 def lisaa_opiskelija(opiskelijat: dict, nimi: str):
-    opiskelijat[nimi] = set()
+    opiskelijat[nimi] = []
 
 def lisaa_suoritus(opiskelijat: dict, nimi: str, suoritus: tuple):
-    if suoritus[1] == 0:
-        return 0           
-    opiskelijat[nimi].add(suoritus)
-        
+    opiskelijat[nimi].append(suoritus)
+    nähty = {}
+    for c,x in opiskelijat.items():
+        for a in x:
+            q,w = a
+            if q not in nähty and w > 0:
+                nähty[q] = w
+        if q in nähty:
+            edlli=w
+            e = q
+            for avain,w in nähty.items():
+                if w > edlli and avain == e:
+                    nähty[q] = w
+                if w < edlli and avain == e:
+                    nähty[q] = edlli                
+        else:
+            pass
+
+
+
 def tulosta(opiskelijat: dict, nimi: str):
     if nimi not in opiskelijat:
         print(f"ei löytynyt ketään nimellä {nimi}") 
@@ -208,15 +352,15 @@ def tulosta(opiskelijat: dict, nimi: str):
             else:
                 nähdytArvot = {}
                 keskiarvo = 0
-                lukuja = 0
+              
                 
                 for avain2,arvot2 in arvot:
                     nähdytArvot[avain2] = arvot2
                 suoritukset = len(nähdytArvot)
+                
                 for a,s in nähdytArvot.items():
                     keskiarvo += s
-                    lukuja += 1
-
+              
                 if suoritukset == 0:
                     print(" ei suorituksia")
                 else:
@@ -228,7 +372,7 @@ def tulosta(opiskelijat: dict, nimi: str):
                 if keskiarvo == 0:
                     pass
                 else:
-                    print(f" keskiarvo {keskiarvo/lukuja}")
+                    print(f" keskiarvo {keskiarvo/len(nähdytArvot)}")
                 
    
 
@@ -256,33 +400,12 @@ if __name__=="__main__":
     opiskelijat = {}
     lisaa_opiskelija(opiskelijat, "emilia")
     lisaa_opiskelija(opiskelijat, "pekka")
+    lisaa_suoritus(opiskelijat, "emilia", ("ohpe", 4))
     lisaa_suoritus(opiskelijat, "emilia", ("ohpe", 5))
-    lisaa_suoritus(opiskelijat, "emilia", ("tikape", 4))
     lisaa_suoritus(opiskelijat, "pekka", ("tira", 3))
-    tulosta(opiskelijat, "emilia")
-    # print(opiskelijat)
-
-
-
-# nähäty = {}
-    # for i in suoritukset:
-    #     aine, numero = i
-    #     if aine not in nähäty and numero > 0:
-    #         nähäty[aine] = numero
-    #     if aine in nähäty:
-    #         edlli=numero
-    #         e = aine
-    #         for avain,numero in nähäty.items():
-    #             if numero > edlli and avain == e:
-    #                 nähäty[aine] = numero                
-    #             if numero < edlli and avain == e:
-    #                 nähäty[aine] = edlli
-    #     else:
-    #         pass
-    # print(nähäty)
-    # for i in suoritukset:
-    #     aine, numero = i
-    #     if numero == 0:
-    #         del i
-    #     else:
-    #         opiskelijat[nimi].append(i)
+    lisaa_suoritus(opiskelijat, "pekka", ("lama", 0))
+    lisaa_suoritus(opiskelijat, "pekka", ("tira", 2))
+    lisaa_suoritus(opiskelijat, "pekka", ("jtkt", 1))
+    lisaa_suoritus(opiskelijat, "pekka", ("ohtu", 3))
+    kooste(opiskelijat)
+    print(opiskelijat)
