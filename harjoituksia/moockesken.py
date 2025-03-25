@@ -175,11 +175,10 @@ if __name__=="__main__":
 
 # reseptin haku
 
-# tee ratkaisu tänne
 def hae_nimi(tiedosto: str, sana: str):
     resepti = []
     with open(tiedosto) as tiedosto2:
-        for i in tiedosto2:
+        for rivi in tiedosto2:
             i = i.replace("\n", "")
             if sana.lower() in i.lower():
                 resepti.append(i)
@@ -188,25 +187,26 @@ def hae_nimi(tiedosto: str, sana: str):
     return resepti
 
 def hae_aika(tiedosto: str, aika: int):
-    resepti = []
+    reseptit = []
     ajat = []
     nimi = ""
     with open(tiedosto) as tiedosto2:
-        for i in tiedosto2:
-            i = i.replace("\n", "")
-            resepti.append(i)
-            try:
-                ajat.append(int(i))
-                below = max([x for x in ajat if aika > x])           
-                for c in resepti:
-                    if c.isdigit():
-                        continue
-                    # print(c)
-                    nimi += c            
+        for rivi in tiedosto2:
+            rivi = rivi.replace("\n", "")
+            res = [rivi]
+            reseptit.append(res)
+            
+            if len(rivi) == 0:
+                reseptit.append(res)
+            try:   
+                ajat.append(int(rivi))
+                numero = max([x for x in ajat if aika > x])                       
+                
             except:
                 continue    
+    print(reseptit)
     
-    return f"{nimi}, valmistumisaika {below}"
+    return f"{nimi}, valmistumisaika {numero}"
 
 def hae_raakaaine(tiedosto: str, aine: str):
     pass
@@ -278,28 +278,42 @@ if __name__=="__main__":
     asema1, asema2, suurin = suurin_etaisyys(asemat)
     print(asema1, asema2, suurin)
 
-# paivakirja
+# aineiston suodatus
 
-# tee ratkaisu tänne
-def paivakirja():
-    while True:
-        sijainti = "paivakirja.txt"
-        valinta = int(input("1 - lisää merkintä, 2 - lue merkinnät, 0 - lopeta: "))
-        if valinta == 1:
-            with open(sijainti, "a") as tiedosto:            
-                # print(f"Valinta:{valinta}")
-                merkinta = input("Anna merkintä: ") 
-                tiedosto.write(f"{merkinta}\n")
-                print("Päiväkirja tallennettu")
-                print()
-        elif valinta == 2:
-            # print(f"Valinta:{valinta}")
-            print("Merkinnät:")
-            f = open(sijainti)
-            print(f.read(), end="")
-        elif valinta == 0:
-            # print(f"Valinta: {valinta}")
-            print("Heippa!")
-            break
+def suodata_laskut():
+    sanakirja = {}
+    with open("laskut.csv") as tiedosto:
+        for rivi in tiedosto:
+            rivi = rivi.replace("\n", "")
+            rivi = rivi.replace(";", " ")
+            rivi = rivi.replace("+", " ")
+            rivi = rivi.replace("-", " ")
+        
+if __name__=="__main__":
+    suodata_laskut()
 
-paivakirja()
+# virheelliset lottonumerot
+
+def suodata_virheelliset():
+    oikeatRivit = []
+    with open("lottonumerot.csv") as tiedosto:
+        for rivi in tiedosto:
+            try: 
+                rivi = rivi.replace("\n", " ")
+                rivi = rivi.replace(",", " ")
+                osat = rivi.split(";")
+                viikko = int(osat[0][7:9])
+                nu = int(osat[1][0])
+                # print(viikko,nu)
+                oikeatRivit.append(rivi)
+            except:
+                continue
+    for c in oikeatRivit:
+        for a in c:
+            if a == ";":
+                print(a)
+
+if __name__=="__main__":
+    suodata_virheelliset()
+
+
