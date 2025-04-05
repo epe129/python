@@ -1,11 +1,3 @@
-# import pygame
-
-# pygame.init()
-
-# onko = pygame.get_init()
-
-# print(onko)
-
 import pygame
 from pygame.locals import *
 
@@ -13,6 +5,7 @@ from pygame.locals import *
 
 # tuomme pygame-moduulin
 pygame.init()
+
 # asetamme nöytön koon # pygame.RESIZABLE antaa koon muuntamisen luvan
 # n = pygame.display.set_mode((500, 500), pygame.RESIZABLE)
 
@@ -26,30 +19,48 @@ black = (0,0,0)
 red = (255,0,0)
 
 # assingning values to x and y variable
-X = 400
-Y = 400
+# X = 400
+# Y = 400
 
 # create the display surface object
 # of specific dimension (X,Y)
-d = pygame.display.set_mode((X,Y))
-
+screen = pygame.display.set_mode((400,400))
+# timer = pygame.time.Clock() 
 # asettaa otsikon 
 pygame.display.set_caption("asd")
 # a = pygame.image.load("a.png")
 # # ikkuna kuvakkeen muuntaminen
 # pygame.display.set_icon(a) 
 
+img = pygame.image.load("a.png").convert()
+
 # creating list in which we will store
 # the position of the circle 
 # circle_positions = []
-d.fill(white)
+# d.fill(white)
 
+# bg_active_color = white
+# d.fill(white)
 # # radius of the circle
 # circle_radius = 60
 
 # c = (255,255,255)
 # antaa näytön normaalin koon
 # x, y = n.get_size()
+
+# custom user event to change color
+# change_color = pygame.USEREVENT + 1
+
+# custom user event to inflate defalte box
+# ON_BOX = pygame.USEREVENT + 2
+
+# create rectangle
+# box = pygame.Rect((225, 225, 50, 50))
+# grow = True
+
+
+# vaihtaa väriä joka 500 ms
+# pygame.time.set_timer(change_color, 500)
 
 # k = pygame.Surface.copy(n)
 
@@ -112,17 +123,138 @@ d.fill(white)
 # # thickness of line parameter is optimal
 # pygame.draw.rect(d, black, (150, 300, 100, 50))
 
-pygame.draw.rect(d,black, pygame.Rect(30,30,60,60), 2, border_bottom_right_radius=5)
+# pygame.draw.rect(d,black, pygame.Rect(30,30,60,60), 2, border_bottom_right_radius=5)
 Käynnissä = True
+
+# x,y = 0,0
+# move_x,move_y = 0,0
+
+# cliking = False
+# right_cliking = False
+# middle_clikcing = False
+
+
 # Pelin silmukka niin kaun käynnissä kun peli suljetaan
 while Käynnissä:
+    mx, my = pygame.mouse.get_pos() ## hiiren x ja y koordinaatit
+    paikka = [mx, my]
     # Tarkista tapahtuma, jos käyttäjä on työntänyt 
     # tapaus jonossa
     for event in pygame.event.get():
-        # jos painaa x niin lopettaa
         if event.type == pygame.QUIT:
             Käynnissä = False
+    
+    # if event.type == MOUSEBUTTONDOWN:
+    #     if event.button == 1:
+    #         cliking = True
+    #         img = pygame.image.load("p.png")
+    #         pygame.display.update()  # update image
 
+
+    #     if event.button == 3:
+    #         middle_clikcing = middle_clikcing
+
+    #         img = pygame.transform.scale(img, (100, 100))
+    #         pygame.display.update()
+
+    # if event.type == MOUSEBUTTONUP:
+    #     if event.button == 1:
+    #         cliking = False
+    
+    # screen.fill((255,255,255))
+
+    # screen.blit(img, (paikka[0], paikka[1]))
+
+    # if event.type == KEYDOWN:
+    #     if event.key == K_LEFT:
+    #         move_x = -0.3
+    #     elif event.key == K_RIGHT:
+    #         move_x = +0.3
+    #     elif event.key == K_UP:
+    #         move_y = -0.3
+    #     elif event.key == K_DOWN:
+    #         move_y = +0.3
+        
+
+
+    #     elif event.key == K_LCTRL:
+    #         img = pygame.image.load("p.png")
+    #         pygame.display.update()
+    #     elif event.key == K_BACKSPACE:
+    #         img = pygame.image.load("a.png")
+    #         pygame.display.update()
+        
+    # if event.type == KEYUP:
+    #     if event.key == K_LEFT:
+    #         move_x = 0
+    #     elif event.key == K_RIGHT:
+    #         move_x = 0
+    #     elif event.key == K_UP:
+    #         move_y = 0
+    #     elif event.key == K_DOWN:
+    #         move_y = 0
+    
+    # x += move_x
+    # y += move_y
+    
+    # screen.fill((255, 255, 255))
+    
+    # screen.blit(img, (x,y))
+
+
+        # if event.type == change_color:
+        #     if bg_active_color == green:
+        #         d.fill(green)
+        #         bg_active_color = white
+        #     elif bg_active_color == white:
+        #         d.fill(white)
+        #         bg_active_color = green
+        
+        # if event.type == ON_BOX:
+        #     if grow:
+        #         box.inflate_ip(3,3)
+        #         grow = box.width < 50
+        #     else:
+        #         box.inflate_ip(-3,-3)
+        #         grow = box.width < 50
+                
+        # if box.collidepoint(pygame.mouse.get_pos()):
+        #     pygame.event.post(pygame.event.Event(ON_BOX))
+
+        # if event.type == pygame.KEYDOWN:
+        #     if event.key == pygame.K_RIGHT:
+        #         print("olet painanut oikeaa nuoli näppäintä")
+        #     elif event.key == pygame.K_LEFT:
+        #         print("olet painanut vasempaa nuoli näppäintä")
+        #     elif event.key == pygame.K_UP:
+        #         print("olet painanut ylöspäin nuoli näppäintä")
+
+      
+        # if event.type == pygame.QUIT:
+        #     raise SystemExit
+        # elif event.type == pygame.MOUSEMOTION:
+        #     if event.rel[0] > 0:
+        #         print("hiiri liikkuu oikealle")
+        #     elif event.rel[1] > 0:
+        #         print("hiiri liikkuu alas")
+        # elif event.type == pygame.MOUSEBUTTONDOWN:
+        #     if event.button == 3:
+        #         print("paino oikeaa hiirestä")
+        # elif event.type == pygame.MOUSEBUTTONUP:
+        #     print("hiiri painike vapautettu")
+        
+        # if event.type == pygame.KEYDOWN:
+        #     if event.key == pygame.K_w:
+        #         print("painoit w:ta")
+        #     elif event.key == pygame.K_s:
+        #         print("painoit s:saa")
+        #     elif event.key == pygame.K_a:
+        #         print("painoit a:ta")
+        #     elif event.key == pygame.K_d:
+        #         print("painoit d:ta")
+            
+        # jos painaa x niin lopettaa
+      
         # if the type of the evnt is MOUSEBUTTONDOWN
         # then storing the current position
         # elif event.type == MOUSEBUTTONDOWN:
@@ -138,8 +270,12 @@ while Käynnissä:
   
     # n.fill((255,255,255))
 
+    # pygame.draw.rect(d, red, box)
+
     
     pygame.display.update()
+
+    # timer.tick(30)
 
     # drawingfucntion(50,200,500,200)
 
