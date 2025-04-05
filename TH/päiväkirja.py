@@ -1,11 +1,8 @@
 import tkinter as tk
-from tkinter import *
-from tkinter.ttk import *
  
 root = tk.Tk()
 root.title("Joku appi")
 root.geometry("400x400")
-style = Style()
 
 def tallenna():
     teksti = txt.get("1.0", "end-1c")
@@ -17,11 +14,12 @@ def näytä():
     with open("käyttäjän_syöte", "r") as tiedoto:
         lbl.config(text=f"{tiedoto.read()}")
 
+
 # otta input käyttäjältä
 txt = tk.Text(root, height=2, width=40)
 txt.pack()
 
-nappi = tk.Button(root,text="tallenna", command=tallenna)
+nappi = tk.Button(root,text="tallenna",command=tallenna)
 nappi.pack()
 
 nappi_näytä = tk.Button(root, text="näytä teksti", command=näytä)
