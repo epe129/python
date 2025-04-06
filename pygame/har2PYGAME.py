@@ -32,7 +32,7 @@ pygame.display.set_caption("asd")
 # # ikkuna kuvakkeen muuntaminen
 # pygame.display.set_icon(a) 
 
-img = pygame.image.load("a.png").convert()
+# img = pygame.image.load("a.png").convert()
 
 # creating list in which we will store
 # the position of the circle 
