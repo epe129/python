@@ -75,7 +75,7 @@ while not loppu:
         x += 5
     
     for punainen in punaisetPallot:
-        if x < punainen[0] + 35 and x + 50 > punainen[0] - 35 and y < punainen[1] + 20 and y + 50 > punainen[1] - 20:
+        if x < punainen[0] + 20 and x + 50 > punainen[0] - 20 and y < punainen[1] + 20 and y + 50 > punainen[1] - 20:
             loppu = True
             break
         
