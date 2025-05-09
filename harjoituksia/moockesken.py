@@ -317,3 +317,286 @@ if __name__=="__main__":
     suodata_virheelliset()
 
 
+# tee ratkaisu tänne
+# missä virhe, jump, lisäys, kertaus tai miinus, ikuinen testin mukaan miksi?
+import re
+
+def suorita(ohjelma):
+    palautus = []
+    muuttujat = {}
+    alusta = True
+    KäydytKomennot = []
+    o = ohjelma
+    for d in ohjelma:
+        if "MOV" in d:
+            KäydytKomennot.append("MOV")
+                        
+        if ":" in d and "JUMP" not in d:
+            teksti = ""
+            for t in d:
+                if ":" in t:
+                    continue
+                teksti += t
+            KäydytKomennot.append(teksti)
+
+        if "PRINT" in d:
+            KäydytKomennot.append("PRINT")
+                
+        if "ADD" in d:
+            KäydytKomennot.append("ADD")
+            
+        if "IF" in d:
+            KäydytKomennot.append("IF")
+            
+        if "SUB" in d:
+            KäydytKomennot.append("SUB")
+
+        if "MUL" in d:
+            KäydytKomennot.append("MUL")
+
+        if "JUMP" in d and "IF" not in d:
+            KäydytKomennot.append("JUMP")
+
+    while alusta:
+        for i, komennot in enumerate(o):
+            if "MOV" in komennot:
+                MOV(komennot, muuttujat)
+            
+            if "PRINT" in komennot:
+                PRINT(komennot, muuttujat, palautus)   
+               
+                
+            if "ADD" in komennot:
+                ADD(komennot, muuttujat, palautus)
+               
+            if "IF" in komennot:
+                p = komennot.split()
+                välimerkki = p[2]
+                for avain, arvo in muuttujat.items():
+                    if p[1] in avain:
+                        if arvo in muuttujat.keys():
+                            arvo = muuttujat[arvo]
+                        eka = arvo
+                    if p[3] in avain:
+                        if arvo in muuttujat.keys():
+                            arvo = muuttujat[arvo]
+                        toka = arvo
+                if p[1] not in muuttujat.keys():
+                    eka = p[1]
+
+                if p[3] not in muuttujat.keys():
+                    toka = p[3]
+                
+                if välimerkki == "==":
+                    if int(eka) == int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    # else:
+                    #     pass
+
+                elif välimerkki == "!=":
+                    if int(eka) != int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    # else:
+                    #     pass 
+                
+                elif välimerkki == "<":
+                    if int(eka) < int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    # else:
+                    #     pass 
+
+
+                elif välimerkki == ">":
+                    if int(eka) > int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    # else:
+                    #     pass   
+
+               
+                elif välimerkki == "<=":
+                    if int(eka) <= int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    alusta = False
+                   
+                       
+                elif välimerkki == ">=":
+                    if int(eka) >= int(toka):
+                        if p[5] in KäydytKomennot:
+                            x = KäydytKomennot.index(p[5])
+                            while i != x:
+                                if x > i:
+                                    i += 1
+                                else:
+                                    i -= 1
+                            if i == x:
+                                o = ohjelma[x+1:]
+                                break
+                    # else:
+                    #     alusta = False
+                        # else:
+                        # pass  
+
+               
+            
+            if "SUB" in komennot:
+                SUB(komennot, muuttujat, palautus)
+
+            if "MUL" in komennot:
+                MUL(komennot, muuttujat, palautus)
+
+
+            if "JUMP" in komennot and "IF" not in komennot:
+                a = komennot.split()
+                if a[1] in KäydytKomennot:
+                    x = KäydytKomennot.index(a[1])
+                    while i != x:
+                        if x > i:
+                            i += 1
+                        else:
+                            i -= 1
+                    if i == x:
+                        o = ohjelma[x+1:]
+                        break
+            # print(len(komennot))
+            # print(muuttujat)
+            if "END" in komennot or alusta == False:
+                return palautus
+
+def MOV(komennot, muuttujat):
+    muuttuja = komennot.split()
+    kirjaimet = re.findall("[A-Z]", muuttuja[1])
+    if muuttuja[1] in kirjaimet:
+        nimi = muuttuja[1] 
+        arvo = muuttuja[2]
+    muuttujat[nimi] = arvo
+
+def PRINT(komennot, muuttujat, palautus):
+    a = komennot.split()
+
+    for avain, arvo in muuttujat.items():
+        if a[1] in avain:
+            palautus.append(int(arvo))
+    if a[1] not in muuttujat.keys():
+        try:
+            palautus.append(int(a[1]))
+        except:            
+            palautus.append(0)
+
+            
+
+def ADD(komennot, muuttujat, palautus):
+    a = komennot.split() 
+    for avain, arvo in muuttujat.items():
+        if a[2] in avain:
+            muuttujat[avain] = int(arvo) + int(muuttujat[a[2]])
+            break
+        if a[2] not in avain and a[1] in avain:
+            if a[2] not in muuttujat.keys():
+                muuttujat[avain] = int(arvo) + int(a[2])
+                break 
+            muuttujat[avain] = int(arvo) + int(muuttujat[a[2]]) 
+            break
+        
+
+     
+def SUB(komennot, muuttujat, palautus):
+    a = komennot.split()
+    for avain, arvo in muuttujat.items():
+        if a[2] in avain:
+            muuttujat[avain] = int(arvo) - int(muuttujat[a[2]])
+            break
+        if a[2] not in avain and a[1] in avain:
+            if a[2] not in muuttujat.keys():
+                muuttujat[avain] = int(arvo) - int(a[2])
+                break 
+            muuttujat[avain] = int(arvo) - int(muuttujat[a[2]]) 
+            break
+
+def MUL(komennot, muuttujat, palautus):
+    a = komennot.split()
+    for avain, arvo in muuttujat.items():
+        if a[2] in avain and a[1] in avain:
+            muuttujat[avain] = int(arvo) * int(muuttujat[a[2]])
+            break
+        if a[2] not in avain and a[1] in avain:
+            if a[2] not in muuttujat.keys():
+                muuttujat[avain] = int(arvo) + int(a[2])
+                break 
+            muuttujat[avain] = int(arvo) * int(muuttujat[a[2]])
+            break
+        
+        
+if __name__=="__main__":
+    ohjelma4 = []
+    ohjelma4.append("MOV N 50")
+    ohjelma4.append("PRINT 2")
+    ohjelma4.append("MOV A 3")
+    ohjelma4.append("alku:")
+    ohjelma4.append("MOV B 2")
+    ohjelma4.append("MOV Z 0")
+    ohjelma4.append("testi:")
+    ohjelma4.append("MOV C B")
+    ohjelma4.append("uusi:")
+    ohjelma4.append("IF C == A JUMP virhe")
+    ohjelma4.append("IF C > A JUMP ohi")
+    ohjelma4.append("ADD C B")
+    ohjelma4.append("JUMP uusi")
+    ohjelma4.append("virhe:")
+    ohjelma4.append("MOV Z 1")
+    ohjelma4.append("JUMP ohi2")
+    ohjelma4.append("ohi:")
+    ohjelma4.append("ADD B 1")
+    ohjelma4.append("IF B < A JUMP testi")
+    ohjelma4.append("ohi2:")
+    ohjelma4.append("IF Z == 1 JUMP ohi3")
+    ohjelma4.append("PRINT A")
+    ohjelma4.append("ohi3:")
+    ohjelma4.append("ADD A 1")
+    ohjelma4.append("IF A <= N JUMP alku")
+    tulos = suorita(ohjelma4)
+    print(tulos)
