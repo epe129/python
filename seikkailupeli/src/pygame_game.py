@@ -60,6 +60,14 @@ class VisualGame:
         self.player_y = SCREEN_HEIGHT // 2 - PLAYER_SIZE[1] // 2
         self.player_speed = 5  # Pelaajan liikkumisnopeus
 
+        # Lisää taustamusiikki ja ääni
+        pygame.mixer.init()
+        pygame.mixer.music.load("assets/sounds/background_music.mp3")
+        pygame.mixer.music.play(-1)  # Toista taustamusiikki loputtomasti
+
+        self.pickup_sound = pygame.mixer.Sound("assets/sounds/pickup.wav")
+        self.enemy_sound = pygame.mixer.Sound("assets/sounds/enemy.wav")
+
     def draw_text(self, text, x, y, color=BLACK, font=None):
         if font is None:
             font = self.font
@@ -117,6 +125,16 @@ class VisualGame:
         for i, command in enumerate(KEY_COMMANDS):
             self.draw_text(command, x_offset, y_offset + i * 25, BLACK, font=self.small_font)
 
+    def draw_score(self):
+        score_text = f"Pisteet: {self.game.player.score}"
+        self.draw_text(score_text, 20, SCREEN_HEIGHT - 160)
+
+    def draw_enemies(self):
+        room = self.game.rooms[self.game.player.current_room]
+        if room.enemies:
+            enemy_text = f"Viholliset: {', '.join(room.enemies)}"
+            self.draw_text(enemy_text, 20, SCREEN_HEIGHT - 200)
+
     def handle_input(self, event):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_q:  # Lopeta peli
@@ -130,6 +148,7 @@ class VisualGame:
                 room = self.game.rooms[self.game.player.current_room]
                 if room.items:
                     result = self.game.process_command(f"poimi {room.items[0]}")
+                    self.pickup_sound.play()  # Soita ääni
                     print(result)
 
     def update_player_position(self, keys):
@@ -165,6 +184,8 @@ class VisualGame:
             self.draw_inventory()
             self.draw_key_commands()
             self.draw_doors()  # Piirrä ovet
+            self.draw_score()  # Näytä pistemäärä
+            self.draw_enemies()  # Näytä viholliset
 
             keys = pygame.key.get_pressed()
             self.update_player_position(keys)

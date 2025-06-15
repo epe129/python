@@ -16,6 +16,10 @@ class Player:
     def __init__(self, current_room):
         self.current_room = current_room
         self.inventory = []
+        self.score = 0  # Pelaajan pistetili
+
+    def add_score(self, points):
+        self.score += points
 
 class Game:
     def __init__(self):
@@ -30,19 +34,32 @@ class Game:
             "Aula": Room(
                 "Aula",
                 "Olet aulassa. Täällä on vanha matto ja ovi pohjoiseen.",
-                {"pohjoinen": "Olohuone"},
+                {"pohjoinen": "Olohuone", "itä": "Piha"},
                 items=["avain"],
                 locked_exits={"pohjoinen": "avain"}
             ),
             "Olohuone": Room(
                 "Olohuone",
                 "Tämä on pimeä olohuone. Seinällä on taulu ja ovi itään.",
-                {"etelä": "Aula", "itä": "Keittiö"}
+                {"etelä": "Aula", "itä": "Keittiö", "länsi": "Kellari"},
+                items=["miekka"]
             ),
             "Keittiö": Room(
                 "Keittiö",
                 "Olet keittiössä. Täällä on pöytä ja ovi länteen.",
-                {"länsi": "Olohuone"}
+                {"länsi": "Olohuone"},
+                items=["kilpi"]
+            ),
+            "Piha": Room(
+                "Piha",
+                "Olet pihalla. Täällä on kaunis puutarha ja ovi länteen.",
+                {"länsi": "Aula"}
+            ),
+            "Kellari": Room(
+                "Kellari",
+                "Olet kellarissa. Täällä on hämärää ja ovi itään.",
+                {"itä": "Olohuone"},
+                items=["lyhty"]
             )
         }
 
@@ -99,6 +116,11 @@ class Game:
         elif verb in ("lopeta", "exit", "poistu"):
             self.save()
             return "Peli tallennettu ja lopetettu. Hei hei!"
+
+        elif verb == "hyökkää" and target in room.enemies:
+            room.enemies.remove(target)
+            self.player.add_score(100)  # Ansaitse pisteitä
+            return f"Voitit vihollisen: {target}"
 
         else:
             return "En ymmärrä mitä tarkoitit... (voit hakea ohjeen kirjoittamalla 'komennot')"
