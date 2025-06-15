@@ -2,11 +2,12 @@ import json
 import os
 
 class Room:
-    def __init__(self, name, description, exits, items=None):
+    def __init__(self, name, description, exits, items=None, locked_exits=None):
         self.name = name
         self.description = description
         self.exits = exits  # esim. {"pohjoinen": "Olohuone"}
         self.items = items or []
+        self.locked_exits = locked_exits or {}  # Lukitut ovet {"pohjoinen": "avain"}
 
     def describe(self):
         return f"{self.description}\nNäet: {', '.join(self.items) if self.items else 'ei mitään erityistä.'}"
@@ -26,8 +27,23 @@ class Game:
 
     def load_world(self):
         return {
-            "Aula": Room("Aula", "Olet aulassa. Täällä on vanha matto ja ovi pohjoiseen.", {"pohjoinen": "Olohuone"}, items=["avain"]),
-            "Olohuone": Room("Olohuone", "Tämä on pimeä olohuone. Seinällä on taulu.", {"etelä": "Aula"})
+            "Aula": Room(
+                "Aula",
+                "Olet aulassa. Täällä on vanha matto ja ovi pohjoiseen.",
+                {"pohjoinen": "Olohuone"},
+                items=["avain"],
+                locked_exits={"pohjoinen": "avain"}
+            ),
+            "Olohuone": Room(
+                "Olohuone",
+                "Tämä on pimeä olohuone. Seinällä on taulu ja ovi itään.",
+                {"etelä": "Aula", "itä": "Keittiö"}
+            ),
+            "Keittiö": Room(
+                "Keittiö",
+                "Olet keittiössä. Täällä on pöytä ja ovi länteen.",
+                {"länsi": "Olohuone"}
+            )
         }
 
     def process_command(self, command):
@@ -60,17 +76,21 @@ class Game:
             return f"Poimit: {target}"
 
         elif verb == "kävele" and target in room.exits:
-            self.player.current_room = room.exits[target]
-            return f"Siirryit huoneeseen: {self.player.current_room}"
+            if target in room.locked_exits:
+                required_item = room.locked_exits[target]
+                if required_item in self.player.inventory:
+                    del room.locked_exits[target]  # Poista lukitus
+                    self.player.current_room = room.exits[target]
+                    return f"Avasit oven ja siirryit huoneeseen: {self.player.current_room}"
+                else:
+                    return f"Ovi on lukossa. Tarvitset: {required_item}"
+            else:
+                self.player.current_room = room.exits[target]
+                return f"Siirryit huoneeseen: {self.player.current_room}"
 
         elif verb == "avaa":
-            # Esimerkkinä: oven avaaminen
-            if target == "ovi" and self.player.current_room == "Aula" and "avain" in self.player.inventory:
-                return "Avaat oven ja pääset olohuoneeseen!"
-            elif target == "ovi" and self.player.current_room == "Aula":
-                return "Ovi on lukossa. Tarvitset avaimen."
-            else:
-                return "Et voi avata sitä."
+            if target == "ovi" and self.player.current_room in self.rooms:
+                return "Käytä kävele-komentoa avataksesi oven."
 
         elif verb in ("tallenna",):
             self.save()
