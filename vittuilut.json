@@ -1,0 +1,17 @@
+{
+  "1": [
+    "{nimi}, sä vaikutat siltä, että sun aamut alkaa vasta iltapäivällä. Tervetuloa {paikka}sta.",
+    "Ai {nimi} {paikka}sta? No sehän selittää miksi sulla on sellainen 'ei kiinnosta' -aura.",
+    "Sun tyyli sanoa 'moi' on kuin hissimusiikkia. Huomaa kyllä että oot {paikka}sta."
+  ],
+  "2": [
+    "{nimi}, sun elämä kuulostaa siltä kuin se olisi PowerPoint-esitys ilman yhtäkään animaatiota. Terveisiä {paikka}sta.",
+    "Jos olisin {nimi} ja asuisin {paikka}ssa, mäkin yrittäisin olla mahdollisimman hiljaa.",
+    "{paikka} kasvatti sut, mutta susta tuli silti {nimi}? Rohkeeta."
+  ],
+  "3": [
+    "{nimi}, sä oot niin turha että jopa {paikka} häpeää sua.",
+    "Miten ihmeessä joku {paikka}sta voi olla näin pihalla, {nimi}?",
+    "Sun olemassaolo on kuin {paikka}n joukkoliikenne: jatkuvasti myöhässä eikä kukaan ymmärrä miksi."
+  ]
+}
