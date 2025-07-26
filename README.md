@@ -29,43 +29,6 @@ This repository contains various Python projects and exercises covering differen
 - **Feet to Meters**: Unit conversion tool with GUI
 - **Timer**: Basic timer application
 
-## Installation
-
-Requires Python 3.8 or newer. Install dependencies for specific projects using:
-
-```sh
-pip install -r requirements.txt
-```
-
-## Usage
-
-Each project is contained in its own directory. Navigate to the project directory and run the main Python file:
-
-```sh
-cd project_directory
-python main.py
-```
-
-## Key Features
-
-- Multiple standalone applications
-- Mix of CLI and GUI applications
-- File handling and data persistence
-- Game development examples
-- Text processing utilities
-
-## Testing
-
-Test files are located in the `testit/` directory. Run tests using:
-
-```sh
-python -m pytest testit/
-```
-
-## Contributing
-
-Feel free to submit pull requests or create issues for bugs and feature requests.
-
 ## License
 
 Not open source, for educational purposes only. Do not distribute without permission.
