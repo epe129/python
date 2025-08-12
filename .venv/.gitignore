@@ -1,6 +1,0 @@
-# Python specific
-bin/
-include/
-lib/
-lib64/
-pyvenv.cfg
