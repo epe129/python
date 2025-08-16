@@ -1,15 +1,3 @@
-# Ignore all files
-*
-!*/
-
-# Don't ignore .gitignore
-!.gitignore
-
-# Don't ignore main files
-!main.*
-!main/
-!*/main/*
-
 # Python specific
 __pycache__/
 *.py[cod]
