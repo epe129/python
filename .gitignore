@@ -1,12 +1,6 @@
 # Python specific
-__pycache__/
-*.py[cod]
-*$py.class
-.venv/
-venv/
-ENV/
-env/
-build/
-dist/
-*.egg-info/
-.eggs/
+lib/
+bin/
+share/
+inlude/
+lib64/
