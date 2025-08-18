@@ -1,3 +1,4 @@
+# Ai made this
 import requests
 import pandas as pd
 import ta

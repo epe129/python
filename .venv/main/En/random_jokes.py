@@ -14,7 +14,7 @@ def get_random_english_joke():
     return pyjokes.get_joke(language="en")
 
 if __name__ == "__main__":
-    file_path = "En/jokes.txt"  # Adjust the path if needed
+    file_path = ".venv/main/jokes.txt"  # Adjust the path if needed
     finnish_jokes = read_finnish_jokes_from_file(file_path)
     
     if finnish_jokes:
