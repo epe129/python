@@ -3,7 +3,7 @@ lib64/
 bin/
 share/
 include/
-lib64
+lib64/
 changeip/
 cryptoanalyysi/
 keylockker/
