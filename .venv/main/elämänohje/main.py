@@ -1,6 +1,5 @@
 import random
 
-# Lista elämänohjeita – voit lisätä omia!
 ohjeet = [
     "Älä koskaan luota kirjastokorttiin ilman nimen tarkistusta.",
     "Jos kuulet ankan nauravan, juokse.",
@@ -14,9 +13,7 @@ ohjeet = [
     "Kahvi ei ratkaise kaikkea. Mutta se voi aloittaa ratkaisun."
 ]
 
-# Valitaan sattumanvarainen ohje
 valittu_ohje = random.choice(ohjeet)
 
-# Tulostetaan se
-print("\n🧠 Elämänohjeesi tänään:\n")
+print("\nElämänohjeesi tänään:\n")
 print(f"👉 {valittu_ohje}\n")
