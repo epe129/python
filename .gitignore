@@ -1,7 +1,8 @@
 lib/
+lib64/
 bin/
 share/
-inlude/
+include/
 lib64/
 changeip/
 cryptoanalyysi/
