@@ -1,0 +1,14 @@
+lib/
+lib64/
+bin/
+share/
+include/
+lib64/
+changeip/
+cryptoanalyysi/
+keylockker/
+seikkailupeli/
+Seikkailutarina/
+pygame/2048.py
+numero/
+pyvenv.cfg

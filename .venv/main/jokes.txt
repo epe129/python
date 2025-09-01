@@ -1,0 +1,3 @@
+Miksi ohjelmoijat eivät mene metsään? Koska he pelkäävät puita (trees).
+Mitä ohjelmoija sanoi, kun kahvi loppui? '404 kahvi not found.
+Miksi ohjelmoijat eivät käytä hissiä? Koska he pitävät enemmän silmukasta (loop).
