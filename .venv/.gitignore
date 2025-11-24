@@ -4,13 +4,5 @@ bin/
 share/
 include/
 lib64/
-cryptoanalyysi/
-keylockker/
-seikkailupeli/
-Seikkailutarina/
-pygame/2048.py
-c/
-numero/
-filut/
 pyvenv.cfg
-PasswordManager/
+notpublic/
