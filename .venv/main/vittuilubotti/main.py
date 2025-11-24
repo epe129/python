@@ -17,7 +17,7 @@ def kysy_tiedot():
 
 def hae_vittuilu(nimi, paikka, taso):
     try:
-        with open("/home/lenni/home/codeproject/python/.venv/main/vittuilut.json", "r", encoding="utf-8") as f:
+        with open("/home/lenni/home/koodit/python/.venv/main/vittuilubotti/vittuilut.json", "r", encoding="utf-8") as f:
             kaikki_vittuilut = json.load(f)
         vaihtoehdot = kaikki_vittuilut.get(taso, [])
         if not vaihtoehdot:
