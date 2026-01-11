@@ -6,3 +6,4 @@ include/
 lib64/
 pyvenv.cfg
 notpublic/
+/main/harjotteita/test.py
