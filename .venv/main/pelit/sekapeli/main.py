@@ -10,14 +10,16 @@ width = screen.get_width()
 
 height = screen.get_height()
 
-# white black
+# colors
 black = (0,0,0)
-
+grey = (211, 211, 211)
 white = (255, 255, 255)
 
-smallfont = pygame.font.SysFont('Corbel',35)
+font = pygame.font.SysFont('Corbel', 60)
 
-text = smallfont.render('QuestNumber' , True , black)
+otsikko = font.render('Play diffrent games' , True , black)
+
+numeroPeli = font.render('QuestNumber' , True , black)
 
 running = True
 
@@ -29,20 +31,18 @@ while running:
         screen.fill(white)
         
         mouse = pygame.mouse.get_pos()
-
-        posotion_y = width/2-50
-        posotion_x = height/3
         
         if event.type == pygame.MOUSEBUTTONDOWN:
             
-            if posotion_y <= mouse[0] <= posotion_y+140 and posotion_x <= mouse[1] <= posotion_x+20:
+            if 350 <= mouse[0] <= 350+400 and 300<= mouse[1] <= 300+40:
                 main()
            
+    screen.blit(otsikko, (300, 150))
     
-    screen.blit(text , (posotion_y,posotion_x))
+    pygame.draw.rect(screen, grey,
+                 [345, 290, 300, 60], 0, border_radius=10)
+    screen.blit(numeroPeli, (350, 300))
     
     pygame.display.update()
-
-        
 
 pygame.quit()
