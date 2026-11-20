@@ -19,8 +19,6 @@ print(PySide6.QtCore.__version__)
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-        self.ip = ""
-        
 
         self.text = QtWidgets.QLabel("", alignment=QtCore.Qt.AlignCenter)
         
